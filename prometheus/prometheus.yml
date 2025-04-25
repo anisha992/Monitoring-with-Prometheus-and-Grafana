@@ -1,0 +1,28 @@
+global:
+  scrape_interval: 15s
+  scrape_timeout: 10s
+  evaluation_interval: 15s
+
+scrape_configs:
+- job_name: prometheus
+  honor_timestamps: true
+  scrape_interval: 15s
+  scrape_timeout: 10s
+  metrics_path: /metrics
+  scheme: http
+  static_configs:
+  - targets:
+    - localhost:9090
+  
+- job_name: node_exporter
+  honor_timestamps: true
+  scrape_interval: 15s
+  scrape_timeout: 10s
+  metrics_path: /metrics
+  scheme: http
+  static_configs:
+  - targets:
+    # - localhost:9100 # you migth want to change this to your host IP, if running in node exporter is running in wsl use `hostname -I` to get IP
+    - 172.28.233.92:9100 # you migth want to change this to your host IP, if running in node exporter is running in wsl use `hostname -I` to get IP
+
+
