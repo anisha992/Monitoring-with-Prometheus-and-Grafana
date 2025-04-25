@@ -11,14 +11,15 @@ wget https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_e
 tar xvfz node_exporter-*.*-amd64.tar.gz
 cd node_exporter-*.*-amd64
 ```
-![Screenshot 2025-04-17 105728](https://github.com/user-attachments/assets/be20f4a2-6a2b-42fb-b3e3-04a6736bea34)
 
 2. **Run Node Exporter**:
 ```bash
 ./node_exporter
 ```
 - This starts Node Exporter on `http://localhost:9100`.
-![Screenshot 2025-04-17 105837](https://github.com/user-attachments/assets/140fe425-e273-4c3d-92ab-ee35bede6959)
+<p align="center">
+  <img src="images/img1.png" alt="" />
+</p>
 
 
 3. **Verify Metrics**:
@@ -28,7 +29,9 @@ cd node_exporter-*.*-amd64
     curl http://localhost:9100/metrics
     curl http://localhost:9100/metrics | grep "node_"
     ```
-![Screenshot 2025-04-17 105854](https://github.com/user-attachments/assets/8c409c54-f435-4885-a8ea-0c029e9b24ee)
+<p align="center">
+  <img src="images/img2.png" alt="" />
+</p>
 
 
 4. **Note the WSL IP (if needed)**:
@@ -108,7 +111,10 @@ scrape_configs:
 ```bash
 docker-compose up -d
 ```
-![Screenshot 2025-04-17 111039](https://github.com/user-attachments/assets/c21d2653-2073-4237-8f36-8a89a4c7dcb7)
+<p align="center">
+  <img src="images/img5.png" alt="" />
+</p>
+
 
 
 4. **Verify Prometheus**:
@@ -116,9 +122,11 @@ docker-compose up -d
 - Check targets: **Status → Targets** → Ensure `node-exporter` is **UP**.
 
 ---
-![Screenshot 2025-04-17 112222](https://github.com/user-attachments/assets/137fc8db-00dc-4fcb-9722-52a503372b10)
 
-![Screenshot 2025-04-17 124853](https://github.com/user-attachments/assets/bdf2d3ce-cdbb-4c71-ab68-c5125ddb29e7)
+<p align="center">
+  <img src="images/img10.png" alt="" />
+</p>
+
 
 
 ## **3. Set Up Grafana Dashboard**
@@ -128,29 +136,36 @@ Grafana provides visualization for collected metrics.
 1. **Access Grafana**:
 - Open [http://localhost:3000](http://localhost:3000)
 - Default login: `admin` / `admin`
-![Screenshot 2025-04-17 124952](https://github.com/user-attachments/assets/d0b524cc-89c3-4398-aedf-e40daab99a77)
-![Screenshot 2025-04-17 112330](https://github.com/user-attachments/assets/5075f106-9642-4d9f-b5ca-c043348c07f2)
+<p align="center">
+  <img src="images/img4.png" alt="" />
+</p>
 
 
 2. **Add Prometheus Data Source**:
 - **Configuration → Data Sources → Add Prometheus**
 - URL: `http://prometheus:9090` (or `http://<Prometheus_IP>:9090` if not in Docker)
-![Screenshot 2025-04-17 112557](https://github.com/user-attachments/assets/57c67fef-49ba-4f8e-a887-0752d3bf2eb3)
-![Screenshot 2025-04-17 112753](https://github.com/user-attachments/assets/1b39f8b5-ab25-497e-87f7-6ff3ee538f24)
+!<p align="center">
+  <img src="images/img7.png" alt="" />
+</p>
+!<p align="center">
+  <img src="images/img6.png" alt="" />
+</p>
 
 
 3. **Import Node Exporter Dashboard**:
 - **Create (+) → Import → Dashboard ID `1860`**  
     (or download [Node Exporter Full Dashboard](https://grafana.com/grafana/dashboards/1860))
 - Select Prometheus data source → **Import**.
-![Screenshot 2025-04-17 112841](https://github.com/user-attachments/assets/959c22d5-0fff-418c-b779-98c174adbfce)
+
 
 
 4. **View Metrics**:
 - The dashboard will now display CPU, memory, disk, and network metrics.
 
 ---
-![WhatsApp Image 2025-04-17 at 21 35 02](https://github.com/user-attachments/assets/5cab920c-1fdb-4e9e-9529-56b1662c9bc8)
+<p align="center">
+  <img src="images/img9.png" alt="" />
+</p>
 
 
 ## **Troubleshooting**
